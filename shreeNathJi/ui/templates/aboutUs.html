@@ -1,0 +1,66 @@
+{{ define "title" }} ShreeNathJi Haweli - About Us {{ end }}
+{{ define "content" }}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1 id="class-test" class="display-4">{{.subTitle}}</h1>
+      <h2 class="lead">Mari Haweli</h2>
+     
+      <div >
+        <p>
+          ShreeNathJi Haweli, located in Ahilyanagr, Maharashtra, is a revered
+          place of worship dedicated to Lord ShreeNathJi. Established with the
+          aim of promoting spiritual growth and community service, the Haweli
+          serves as a hub for devotees to gather, pray, and participate in
+          various religious and cultural activities. The architecture of the
+          Haweli reflects traditional Indian design, featuring intricate carvings
+          and vibrant colors that create a serene and sacred atmosphere. The
+          Haweli also hosts regular events, including devotional singing,
+          festivals, and charitable initiatives aimed at supporting the local
+          community. Visitors to ShreeNathJi Haweli can expect a warm welcome
+          and an enriching spiritual experience.
+        </p>    
+      </div>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1 id="class-test" class="display-4">Haveli Directors</h1>
+      <div>
+        <div class="table-responsive">
+          <table class="table table-success table-striped table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">Sr. No.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Role</th>
+                <th scope="col">Phone</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{range $director := .directorsData}}
+              <tr>
+                <td>{{$director.srNo}}</td>
+                <td>{{$director.name}}</td>
+                <td>{{$director.Role}}</td>
+                <td>{{$director.Phone}}</td>
+              </tr>
+              {{end}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="mt-4">
+        <small class="text-muted">Last updated: {{.timestamp}}</small>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+
+{{end}}
+
+{{ define "aboutUs" }}
+    {{ template "base" . }}
+{{ end }}
