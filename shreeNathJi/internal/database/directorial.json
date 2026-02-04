@@ -1,0 +1,58 @@
+{
+  "directors": [
+    {
+      "Phone": "12356789",
+      "Role": "Director",
+      "name": "Kaushik Chhappnaiya",
+      "srNo": 1
+    },
+    {
+      "Phone": "987654321",
+      "Role": "Director",
+      "name": "Devendra Gopaldas Gandhi ",
+      "srNo": 2
+    },
+    {
+      "Phone": "555666777",
+      "Role": "Member",
+      "name": "Madan Girdhardas Gujrathi",
+      "srNo": 3
+    },
+    {
+      "Phone": "444555666",
+      "Role": "Educational Director",
+      "name": "Manoj Gujrathi",
+      "srNo": 4
+    },
+    {
+      "Phone": "333444555",
+      "Role": "Treasurer",
+      "name": "Kanhaiya Shah",
+      "srNo": 5
+    },
+    {
+      "Phone": "12356789",
+      "Role": "Educational Director",
+      "name": "Nitin Tikamdas Gujrathi",
+      "srNo": 6
+    },
+    {
+      "Phone": "12356789",
+      "Role": "Infra Director",
+      "name": "Bharat Devi",
+      "srNo": 7
+    },
+    {
+      "Phone": "12356789",
+      "Role": "Educational Director",
+      "name": "Nilesh Newaskar",
+      "srNo": 8
+    },
+    {
+      "Phone": "12356789",
+      "Role": "Secretary",
+      "name": "Mayur Parikh",
+      "srNo": 9
+    }
+  ]
+}
