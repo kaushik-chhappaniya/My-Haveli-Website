@@ -7,8 +7,8 @@ import (
 
 	"github.com/joho/godotenv"
 	"github.com/kaushik-chhappnaiya/myHaweli/internal/handlers"
-	logger "github.com/kaushik-chhappnaiya/myHaweli/internal/middleware/logger"
-	"github.com/kaushik-chhappnaiya/myHaweli/internal/routes"
+	logger "github.com/kaushik-chhappnaiya/myHaweli/middleware/logger"
+	"github.com/kaushik-chhappnaiya/myHaweli/routes"
 )
 
 func init() {

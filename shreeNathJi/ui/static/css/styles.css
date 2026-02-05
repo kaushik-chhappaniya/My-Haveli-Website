@@ -343,13 +343,23 @@ body {
 /* Image styling */
 #shreenathJiImage {
     width: 100%;
-    max-width: 600px;
+    max-height: 450px;
     height: auto;
     border: 2px solid var(--border-color);
     border-radius: 12px;
     box-shadow: var(--shadow);
     display: block;
     margin: 20px auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.img-container {
+    
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    
+    margin: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 

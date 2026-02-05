@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"time"
 
-	logger "github.com/kaushik-chhappnaiya/myHaweli/internal/middleware"
-	"github.com/kaushik-chhappnaiya/myHaweli/internal/utils"
+	logger "github.com/kaushik-chhappnaiya/myHaweli/middleware/logger"
+	"github.com/kaushik-chhappnaiya/myHaweli/utils"
 )
 
 type LoginRequest struct {

@@ -9,7 +9,7 @@ import (
 	"strings"
 	"sync"
 
-	logger "github.com/kaushik-chhappnaiya/myHaweli/internal/middleware/logger"
+	logger "github.com/kaushik-chhappnaiya/myHaweli/middleware/logger"
 )
 
 type Store struct {

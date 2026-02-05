@@ -4,28 +4,45 @@ import (
 	"net/http"
 	"time"
 
-	logger "github.com/kaushik-chhappnaiya/myHaweli/internal/middleware/logger"
+	logger "github.com/kaushik-chhappnaiya/myHaweli/middleware/logger"
+	"github.com/kaushik-chhappnaiya/myHaweli/utils"
 )
+
+var fileRead utils.Store
+
+func init() {
+	logger.Info("AboutPageHandler initialized.")
+	fileRead = utils.Store{
+		FilePath: "./internal/database/notifications.json",
+	}
+
+}
 
 func (a *App) IndexPageHandler(w http.ResponseWriter, r *http.Request) {
 	logger.Debug("MainPageHandler invoked")
 
 	// Clear and set fresh data for this request
 	a.ClearAndSetData(nil)
+	fileData, err := fileRead.ReadAll()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	logger.Debugf("%v", fileData)
 	data := map[string]any{
 		"contentTemplate": "indexContent",
 		"Title":           "Main Page - Shree Nath Ji's Haweli",
 		"subTitle":        "Welcome to the Main Entrance",
 		"message":         "This is the main page of the Haweli - the entrance door!",
 		"timestamp":       time.Now().Format("2006-01-02 15:04:05"),
-		"ImgSrc":          "/static/images/Shreenathji.jpeg",
+		"ImgSrc":          "/static/images/shreenathji.jpeg",
+		"carouselImages": []string{
+			"/static/images/carousel/shreenathji.jpeg",
+			"/static/images/carousel/yamunaji.jpeg",
+			"/static/images/carousel/mahaprabhuji.jpeg",
+		},
+		"notifications": fileData["notifications"],
 	}
-	// a.Data["PageTemplate"] = "index.html"
-	// a.Data["Title"] = "Main Page - Shree Nath Ji's Haweli"
-	// a.Data["subTitle"] = "Welcome to the Main Entrance"
-	// a.Data["message"] = "This is the main page of the Haweli - the entrance door!"
-	// a.Data["timestamp"] = time.Now().Format("2006-01-02 15:04:05")
-	// a.Data["ImgSrc"] = "/static/images/Shreenathji.jpeg"
 
 	// Add cache-busting headers
 	w.Header().Set("Cache-Control", "no-cache, no-store, must-revalidate")

@@ -4,15 +4,15 @@ import (
 	"net/http"
 	"time"
 
-	logger "github.com/kaushik-chhappnaiya/myHaweli/internal/middleware/logger"
-	"github.com/kaushik-chhappnaiya/myHaweli/internal/utils"
+	logger "github.com/kaushik-chhappnaiya/myHaweli/middleware/logger"
+	"github.com/kaushik-chhappnaiya/myHaweli/utils"
 )
 
-var fileRead utils.Store
+var directorialRead utils.Store
 
 func init() {
 	logger.Info("AboutPageHandler initialized.")
-	fileRead = utils.Store{
+	directorialRead = utils.Store{
 		FilePath: "./internal/database/directorial.json",
 	}
 
@@ -20,16 +20,16 @@ func init() {
 
 func (a *App) AboutPageHandler(w http.ResponseWriter, r *http.Request) {
 	logger.Debug("About page handler invoked.")
-	fileData, err := fileRead.ReadAll()
+	directorialData, err := directorialRead.ReadAll()
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	logger.Debugf("%v", fileData)
+	logger.Debugf("%v", directorialData)
 	data := map[string]any{
 		"contentTemplate": "aboutContent",
 		"Title":           "Mari Haveli - About Us",
-		"directorsData":   fileData["directors"],
+		"directorsData":   directorialData["directors"],
 		"timestamp":       time.Now().Format("2006-01-02 15:04:05"),
 	}
 	name, tmpl := a.Render("aboutUs", data)
