@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"time"
 
-	logger "github.com/kaushik-chhappnaiya/myHaweli/middleware/logger"
-	"github.com/kaushik-chhappnaiya/myHaweli/utils"
+	logger "github.com/kaushik-chhappaniya/myHaweli/middleware/logger"
+	"github.com/kaushik-chhappaniya/myHaweli/utils"
 )
 
 var directorialRead utils.Store

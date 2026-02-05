@@ -1,5 +1,4 @@
-module github.com/kaushik-chhappnaiya/myHaweli
-
+module github.com/kaushik-chhappaniya/myHaweli
 
 go 1.25.7
 

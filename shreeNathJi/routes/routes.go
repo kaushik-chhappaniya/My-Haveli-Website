@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
-	"github.com/kaushik-chhappnaiya/myHaweli/internal/handlers"
-	logger "github.com/kaushik-chhappnaiya/myHaweli/middleware/logger"
+	"github.com/kaushik-chhappaniya/myHaweli/internal/handlers"
+	logger "github.com/kaushik-chhappaniya/myHaweli/middleware/logger"
 )
 
 func RegisterRoutes(app *handlers.App) http.Handler {

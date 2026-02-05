@@ -3,7 +3,7 @@ package handlers
 import (
 	"net/http"
 
-	logger "github.com/kaushik-chhappnaiya/myHaweli/middleware/logger"
+	logger "github.com/kaushik-chhappaniya/myHaweli/middleware/logger"
 )
 
 // NotFoundHandler handles 404 errors with a custom page

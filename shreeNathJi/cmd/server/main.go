@@ -6,9 +6,9 @@ import (
 	"time"
 
 	"github.com/joho/godotenv"
-	"github.com/kaushik-chhappnaiya/myHaweli/internal/handlers"
-	logger "github.com/kaushik-chhappnaiya/myHaweli/middleware/logger"
-	"github.com/kaushik-chhappnaiya/myHaweli/routes"
+	"github.com/kaushik-chhappaniya/myHaweli/internal/handlers"
+	logger "github.com/kaushik-chhappaniya/myHaweli/middleware/logger"
+	"github.com/kaushik-chhappaniya/myHaweli/routes"
 )
 
 func init() {
