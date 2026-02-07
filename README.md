@@ -211,7 +211,7 @@ func (a *App) processLogin(w http.ResponseWriter, r *http.Request) {
 ```bash
 # Clone repository
 git clone <repository-url>
-cd shreeNathJi
+
 
 # Install dependencies
 go mod tidy
