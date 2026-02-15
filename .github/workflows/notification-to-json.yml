@@ -6,7 +6,7 @@ on:
 
 jobs:
   process-notification:
-    if: contains(github.event.issue.labels.*.name, 'notification')
+    if: contains(github.event.issue.title, 'notification')
     runs-on: ubuntu-latest
 
     steps:
@@ -15,26 +15,35 @@ jobs:
         with:
           ref: static-website
 
-      - name: Parse issue body
-        id: parse
-        run: |
-          TITLE=$(echo "${{ github.event.issue.body }}" | sed -n '/Notification Title/{n;p}')
-          CONTENT=$(echo "${{ github.event.issue.body }}" | sed -n '/Notification Content/{n;p}')
-          DATE=$(echo "${{ github.event.issue.body }}" | sed -n '/Date/{n;p}')
+      - name: Append notification to JSON
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
 
-          echo "title=$TITLE" >> $GITHUB_OUTPUT
-          echo "content=$CONTENT" >> $GITHUB_OUTPUT
-          echo "timestamp=$DATE" >> $GITHUB_OUTPUT
+            const body = context.payload.issue.body;
 
-      - name: Append to notifications.json
-        run: |
-          jq '.notifications += [{
-            "title": "${{ steps.parse.outputs.title }}",
-            "content": "${{ steps.parse.outputs.content }}",
-            "timestamp": "${{ steps.parse.outputs.timestamp }}"
-          }]' data/notifications.json > tmp.json
+            const titleMatch = body.match(/Notification Title\s*\n(.+)/);
+            const contentMatch = body.match(/Notification Content\s*\n([\s\S]+?)\n\n/);
+            const dateMatch = body.match(/Date\s*\n(.+)/);
 
-          mv tmp.json data/notifications.json
+            if (!titleMatch || !contentMatch || !dateMatch) {
+              core.setFailed("Invalid issue format");
+              return;
+            }
+
+            const newNotification = {
+              title: titleMatch[1].trim(),
+              content: contentMatch[1].trim(),
+              timestamp: dateMatch[1].trim()
+            };
+
+            const path = 'data/notifications.json';
+            const data = JSON.parse(fs.readFileSync(path, 'utf8'));
+
+            data.notifications.unshift(newNotification);
+
+            fs.writeFileSync(path, JSON.stringify(data, null, 2));
 
       - name: Commit and push
         run: |

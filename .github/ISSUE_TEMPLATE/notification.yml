@@ -1,8 +1,6 @@
 name: 📢 Add Temple Notification
-description: Add a new notification to the temple website
+description: Create a notification that will be published on the website
 title: "notification"
-labels: ["notification"]
-assignees: []
 
 body:
   - type: input
