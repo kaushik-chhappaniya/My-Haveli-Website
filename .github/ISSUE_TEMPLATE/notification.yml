@@ -1,29 +1,33 @@
 name: 📢 Add Temple Notification
-description: Add a new notification for the website
-title: "[NOTIFICATION] "
-labels:
-  - notification
+description: Add a new notification to the temple website
+title: "notification"
+labels: ["notification"]
+assignees: []
+
 body:
   - type: input
-    id: title
+    id: notif_title
     attributes:
       label: Notification Title
+      description: Short heading for the notification
       placeholder: e.g. Darshan Update
     validations:
       required: true
 
   - type: textarea
-    id: content
+    id: notif_content
     attributes:
       label: Notification Content
+      description: Full notification message
       placeholder: e.g. Temple will open after 12 PM today.
     validations:
       required: true
 
   - type: input
-    id: timestamp
+    id: notif_date
     attributes:
       label: Date
+      description: Date to be shown on the website
       placeholder: e.g. 14-Feb-26
     validations:
       required: true
