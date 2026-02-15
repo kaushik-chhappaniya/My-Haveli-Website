@@ -1,0 +1,28 @@
+{
+  "notifications": [
+    {
+      "title": "Ram Shah",
+      "donation": "12,000",
+      "timestamp": "5-Feb-26",
+      "occasion": "Construction"
+    },
+    {
+      "title": "Madan Gujrathi",
+      "donation": "",
+      "timestamp": "5-Feb-26",
+      "occasion": "Construction"
+    },
+    {
+      "title": "Gandhi Pariwar",
+      "donation": "5,00,001",
+      "timestamp": "4-Feb-26",
+      "occasion": "Construction"
+    },
+    {
+      "title": "Gujar Pariwar",
+      "donation": "51,111",
+      "timestamp": "5-Feb-26",
+      "occasion": "Construction"
+    }
+  ]
+}

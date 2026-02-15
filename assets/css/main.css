@@ -545,3 +545,14 @@ body {
     height: 100%;
     border: 0;
 }
+
+.main-name {
+    justify-content: center;
+    display: flex;
+    border: 2px solid rebeccapurple;
+    border-radius: 20px;
+    padding: 10px 30px;
+    width: fit-content;
+    margin: auto;
+    box-shadow: 1px 2px 4px 2px crimson;
+}

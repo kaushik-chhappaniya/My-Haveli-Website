@@ -34,11 +34,7 @@
     />
     <meta name="author" content="Shree Nathji Haweli" />
     <!-- Favicon -->
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="/assets/images/shreenathji.ico"
-    />
+    <link rel="icon" type="image/x-icon" href="assets/images/shreenathji.ico" />
   </head>
 
   <body>
@@ -70,12 +66,12 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="about.html">
+              <a class="nav-link" href="about.html">
                 <i class="bi bi-people me-1"></i>About
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="donate.html">
+              <a class="nav-link active" href="donate.html">
                 <i class="bi bi-envelope me-1"></i>Donation
               </a>
             </li>
@@ -116,71 +112,33 @@
 
     <!-- Main Content -->
     <main class="container my-4">
-      <!-- Info container -->
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-12 text-center">
-            <h2 class="lead">मारी हवेली</h2>
-            <div>
-              <p>
-                ShreeNathJi Haweli, located in Ahilyanagr, Maharashtra, is a
-                revered place of worship dedicated to Lord ShreeNathJi.
-                Established with the aim of promoting spiritual growth and
-                community service, the Haweli serves as a hub for devotees to
-                gather, pray, and participate in various religious and cultural
-                activities. The architecture of the Haweli reflects traditional
-                Indian design, featuring intricate carvings and vibrant colors
-                that create a serene and sacred atmosphere. The Haweli also
-                hosts regular events, including devotional singing, festivals,
-                and charitable initiatives aimed at supporting the local
-                community. Visitors to ShreeNathJi Haweli can expect a warm
-                welcome and an enriching spiritual experience.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h2 class="main-name">श्री मदन मोहन लाल प्यारे जी की जय</h2>
 
-      <!-- Directors -->
-      <div class="table-responsive">
-        <table class="table table-success table-striped table-hover">
-          <thead class="table-dark">
-            <tr>
-              <th scope="col">Sr. No.</th>
-              <th scope="col">Name</th>
-              <th scope="col">Role</th>
-              <th scope="col">Phone</th>
-            </tr>
-          </thead>
-          <tbody id="directors-table-body">
-            <!-- JS injects rows here -->
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Map Location -->
-      <div class="map-wrapper mx-auto">
-        <p class="mx-auto" style="text-align: center">Mari Haweli Location:</p>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d303.93571753283476!2d74.74006957738447!3d19.09477913270961!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdcb06696466209%3A0x887ef531270f31bb!2sAsian%20Paints%20Colourideas%20-%20Abedin%20%26%20Sons%20Paint!5e1!3m2!1sen!2sin!4v1770302965582!5m2!1sen!2sin"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen
-        ></iframe>
-      </div>
+      <!-- Donors -->
+      <table class="table table-striped table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>Sr. No.</th>
+            <th>Name</th>
+            <th>Donation</th>
+            <th>Occasion</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="donorsTableBody"></tbody>
+      </table>
     </main>
-
     <!-- Footer -->
     <footer class="footer mt-auto">
       <div class="container">
         <div class="footer-content">
           <!-- Main Footer Navigation -->
           <div class="footer-links">
-            <a href="/about.html" class="active btn btn-outline-primary">
+            <a href="about.html" class="btn btn-outline-primary">
               <i class="bi bi-info-circle me-1"></i>About Us
             </a>
             <a href="donate.html" class="btn btn-outline-success">
-              <i class="bi bi-envelope me-1"></i>Donates
+              <i class="bi bi-envelope me-1"></i>Donation
             </a>
             <a href="#" class="btn btn-outline-warning">
               <i class="bi bi-question-circle me-1"></i>Help
@@ -325,6 +283,6 @@
 
     <!-- Custom JS -->
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/fetch_directors.js"></script>
+    <script src="assets/js/fetch_donors.js"></script>
   </body>
 </html>
