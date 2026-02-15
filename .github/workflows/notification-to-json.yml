@@ -1,0 +1,43 @@
+name: Add Notification to JSON
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  process-notification:
+    if: contains(github.event.issue.labels.*.name, 'notification')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Parse issue body
+        id: parse
+        run: |
+          TITLE=$(echo "${{ github.event.issue.body }}" | sed -n '/Notification Title/{n;p}')
+          CONTENT=$(echo "${{ github.event.issue.body }}" | sed -n '/Notification Content/{n;p}')
+          DATE=$(echo "${{ github.event.issue.body }}" | sed -n '/Date/{n;p}')
+
+          echo "title=$TITLE" >> $GITHUB_OUTPUT
+          echo "content=$CONTENT" >> $GITHUB_OUTPUT
+          echo "timestamp=$DATE" >> $GITHUB_OUTPUT
+
+      - name: Append to notifications.json
+        run: |
+          jq '.notifications += [{
+            "title": "${{ steps.parse.outputs.title }}",
+            "content": "${{ steps.parse.outputs.content }}",
+            "timestamp": "${{ steps.parse.outputs.timestamp }}"
+          }]' data/notifications.json > tmp.json
+
+          mv tmp.json data/notifications.json
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/notifications.json
+          git commit -m "Add notification from issue #${{ github.event.issue.number }}"
+          git push
