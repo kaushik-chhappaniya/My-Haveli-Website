@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("data/donors.json")
+  fetch("data/donations.json")
     .then((response) => {
       if (!response.ok) {
         throw new Error("Failed to load donors data");
