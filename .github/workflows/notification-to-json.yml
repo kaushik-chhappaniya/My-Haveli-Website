@@ -10,8 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout static website branch
         uses: actions/checkout@v4
+        with:
+          ref: static-website
 
       - name: Parse issue body
         id: parse
