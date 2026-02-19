@@ -1,0 +1,170 @@
+{{define "header"}}
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <i class="bi bi-house-heart-fill me-2"></i>
+                श्री मदन मोहनलाल जी मंदिर
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">
+                            <i class="bi bi-house-door me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about-us">
+                            <i class="bi bi-people me-1"></i>Directorial
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact-us">
+                            <i class="bi bi-envelope me-1"></i>Contact Us
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-info-circle me-1"></i>More
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/events"><i class="bi bi-calendar-event me-2"></i>Events</a></li>
+                            <li><a class="dropdown-item" href="/gallery"><i class="bi bi-images me-2"></i>Gallery</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/notifications"><i class="bi bi-bell me-2"></i>Notifications</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center">
+                    <!-- Theme Toggle Button -->
+                    <button class="theme-toggle btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+                        <i class="bi bi-sun-fill" id="theme-icon"></i>
+                    </button>
+                    
+                    <!-- Sign In Button -->
+                    <button class="btn btn-signin" data-bs-toggle="modal" data-bs-target="#signinModal">
+                        <i class="bi bi-person-circle me-1"></i>Sign In
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Add padding to body for fixed navbar -->
+    <div style="padding-top: 80px;"></div>
+</header>
+
+<!-- Sign In Modal -->
+<div class="modal fade" id="signinModal" tabindex="-1" aria-labelledby="signinModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="signinModalLabel">
+                    <i class="bi bi-person-circle me-2"></i>Sign In to Account
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="adminLoginForm">
+                    <div class="mb-3">
+                        <label for="adminEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="adminEmail" name="email" 
+                               placeholder="Enter your email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="adminPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="adminPassword" name="password" 
+                               placeholder="Enter your password" required>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                    </div>
+                    <div class="mb-2">
+                        <small class="text-muted">
+                            <strong>Demo Credentials:</strong><br>
+                            Email: admin@haweli.com<br>
+                            Password: admin123
+                        </small>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="handleAdminLogin()">
+                    <i class="bi bi-box-arrow-in-right me-1"></i>Sign In
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Admin login handler
+function handleAdminLogin() {
+    const email = document.getElementById('adminEmail').value;
+    const password = document.getElementById('adminPassword').value;
+    
+    if (!email || !password) {
+        alert('Please fill in all fields');
+        return;
+    }
+    
+    // Show loading state
+    const loginButton = document.querySelector('#signinModal .btn-primary');
+    const originalText = loginButton.innerHTML;
+    loginButton.innerHTML = '<i class="bi bi-hourglass-split me-1"></i>Signing In...';
+    loginButton.disabled = true;
+    
+    // Send AJAX request to admin handler
+    fetch('/admin', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            email: email,
+            password: password
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Login successful - redirect to admin dashboard
+            window.location.href = '/admin/dashboard';
+        } else {
+            // Login failed - show error
+            alert(data.message || 'Login failed. Please check your credentials.');
+            loginButton.innerHTML = originalText;
+            loginButton.disabled = false;
+        }
+    })
+    .catch(error => {
+        console.error('Login error:', error);
+        alert('Login error. Please try again.');
+        loginButton.innerHTML = originalText;
+        loginButton.disabled = false;
+    });
+}
+
+// Handle Enter key in login form
+document.addEventListener('DOMContentLoaded', function() {
+    const adminLoginForm = document.getElementById('adminLoginForm');
+    if (adminLoginForm) {
+        adminLoginForm.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                handleAdminLogin();
+            }
+        });
+    }
+});
+</script>
+{{end}}

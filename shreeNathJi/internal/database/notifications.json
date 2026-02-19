@@ -1,0 +1,24 @@
+{
+    "notifications": [
+        {
+            "title": "Jai Shree Krishna",
+            "content": "Aaj darshan che.",
+            "timestamp": "5-Feb-26"
+        },
+        {
+            "title": "Sakadi na sewa",
+            "content": "Sakadi chalu thayi che. sewa ne aao",
+            "timestamp": "6-Feb-26"
+        },
+        {
+            "title": "Sakadi na paisa",
+            "content": "Sakadi na 500 Rs che.",
+            "timestamp": "5-Feb-26"
+        },
+        {
+            "title": "Prasad che",
+            "content": "Aaj prasad che",
+            "timestamp": "7-Feb-26"
+        }
+    ]
+}
