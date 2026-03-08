@@ -1,6 +1,11 @@
 {
   "notifications": [
     {
+      "title": "Darshan time",
+      "content": "12 PM",
+      "timestamp": "07 mar. 2026"
+    },
+    {
       "title": "Saanj na darshan",
       "content": "5.56 PM thashe",
       "timestamp": "16 feb 2026"
